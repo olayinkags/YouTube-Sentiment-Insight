@@ -1,12 +1,12 @@
 # Use modern Python image
-FROM python:3.10-slim
+FROM python:3.11-slim-buster
 
 # Prevent Python from writing .pyc files and enable unbuffered logs
 ENV PYTHONDONTWRITEBYTECODE=1
 ENV PYTHONUNBUFFERED=1
 
 # Set working directory
-WORKDIR /app
+WORKDIR /main
 
 # Copy only dependency file first (for Docker cache efficiency)
 COPY requirements.txt .
@@ -24,4 +24,4 @@ COPY . .
 EXPOSE 5000
 
 # Command to start app
-CMD ["python3", "app.py"]
+CMD ["python3", "main.py"]
